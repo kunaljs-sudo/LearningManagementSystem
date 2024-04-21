@@ -1,0 +1,316 @@
+{
+	"info": {
+		"_postman_id": "a5a1c22a-bc75-43e7-b651-5279a628f145",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "29849722"
+	},
+	"item": [
+		{
+			"name": "CreateNewStudents",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Aakash\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8081/student"
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Exams with providing subject_id as body",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"subject_id\": 5\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8081/exam"
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Subject providing name in body",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"English\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8081/subject"
+			},
+			"response": []
+		},
+		{
+			"name": "Enroll Student in Subject, subject_id pathVarialbe and student_id body",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"student_id\": 3\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8081/subject/4"
+			},
+			"response": [
+				{
+					"name": "Enroll Student in Subject, subject_id pathVarialbe and student_id body",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"student_id\": 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/subject/4"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 20 Apr 2024 19:56:15 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"subject_id\": 4,\n    \"name\": \"Hindi\",\n    \"students\": [\n        \"Aakash\"\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Register Student for exam if enrolled in that subject",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"student_id\": 3\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8081/exam/4"
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllExams",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8081/exam"
+			},
+			"response": [
+				{
+					"name": "GetAllExams",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8081/exam"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 21 Apr 2024 06:53:31 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"exam_id\": 1,\n        \"subject\": \"Maths\",\n        \"students\": [\n            \"Kunal - Exams Enrolled: [1,2]\",\n            \"Aakash - Exams Enrolled: [1,4]\"\n        ]\n    },\n    {\n        \"exam_id\": 2,\n        \"subject\": \"Physics\",\n        \"students\": [\n            \"Kunal - Exams Enrolled: [1,2]\",\n            \"Kamal - Exams Enrolled: [2,3]\"\n        ]\n    },\n    {\n        \"exam_id\": 3,\n        \"subject\": \"Chemistry\",\n        \"students\": [\n            \"Kamal - Exams Enrolled: [2,3]\"\n        ]\n    },\n    {\n        \"exam_id\": 4,\n        \"subject\": \"Hindi\",\n        \"students\": [\n            \"Aakash - Exams Enrolled: [1,4]\"\n        ]\n    },\n    {\n        \"exam_id\": 5,\n        \"subject\": \"English\",\n        \"students\": []\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get All Subject",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8081/subject"
+			},
+			"response": [
+				{
+					"name": "Get All Subject",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8081/subject"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 21 Apr 2024 06:56:21 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"subject_id\": 1,\n        \"name\": \"Maths\",\n        \"students\": [\n            \"Kunal\",\n            \"Aakash\"\n        ]\n    },\n    {\n        \"subject_id\": 2,\n        \"name\": \"Physics\",\n        \"students\": [\n            \"Kunal\",\n            \"Kamal\"\n        ]\n    },\n    {\n        \"subject_id\": 3,\n        \"name\": \"Chemistry\",\n        \"students\": [\n            \"Kamal\"\n        ]\n    },\n    {\n        \"subject_id\": 4,\n        \"name\": \"Hindi\",\n        \"students\": [\n            \"Aakash\"\n        ]\n    },\n    {\n        \"subject_id\": 5,\n        \"name\": \"English\",\n        \"students\": []\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get All Students",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8081/student/allStudents"
+			},
+			"response": [
+				{
+					"name": "Get All Students",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8081/student/allStudents"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 21 Apr 2024 06:56:43 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"student_id\": 1,\n        \"name\": \"Kunal\",\n        \"subjects\": [\n            \"Maths\",\n            \"Physics\"\n        ],\n        \"exams\": [\n            \"1\",\n            \"2\"\n        ]\n    },\n    {\n        \"student_id\": 2,\n        \"name\": \"Kamal\",\n        \"subjects\": [\n            \"Physics\",\n            \"Chemistry\"\n        ],\n        \"exams\": [\n            \"2\",\n            \"3\"\n        ]\n    },\n    {\n        \"student_id\": 3,\n        \"name\": \"Aakash\",\n        \"subjects\": [\n            \"Maths\",\n            \"Hindi\"\n        ],\n        \"exams\": [\n            \"1\",\n            \"4\"\n        ]\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Sending already enrolled student in exam gives error",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"student_id\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8081/exam/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Send request to enroll in already enrolled subject result in error",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"student_id\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8081/subject/1"
+			},
+			"response": []
+		}
+	]
+}
