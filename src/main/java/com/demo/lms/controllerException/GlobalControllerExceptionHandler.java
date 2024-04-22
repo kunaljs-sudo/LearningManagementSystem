@@ -10,6 +10,7 @@ import com.demo.lms.entityException.ExamNotFoundException;
 import com.demo.lms.entityException.StudentNotFoundException;
 import com.demo.lms.entityException.SubjectNotFoundException;
 import com.demo.lms.exception.BadDataProvidedException;
+import com.demo.lms.exception.NumberAPIException;
 import com.demo.lms.exception.UnableToRegisterStudent;
 import com.demo.lms.exchanges.ErrorResponse;
 
@@ -48,6 +49,13 @@ public class GlobalControllerExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<ErrorResponse> handleUnableToRegisterStudent(UnableToRegisterStudent ex) {
         ErrorResponse errorResponse = new ErrorResponse(HttpStatus.BAD_REQUEST.value(), ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+    }
+
+    @ExceptionHandler(NumberAPIException.class)
+    @ResponseStatus(HttpStatus.BAD_GATEWAY)
+    public ResponseEntity<ErrorResponse> handleNumberAPIException(NumberAPIException ex) {
+        ErrorResponse errorResponse = new ErrorResponse(HttpStatus.BAD_GATEWAY.value(), ex.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
 }
